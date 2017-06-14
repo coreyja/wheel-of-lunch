@@ -1,7 +1,5 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  def name
-    email
-  end
+  alias_attribute :name, :email
 end
