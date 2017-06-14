@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-  get 'home/index'
+  get 'welcome', to: 'welcome#index'
+  get 'home', to: 'home#index'
 
   root 'welcome#index'
 
