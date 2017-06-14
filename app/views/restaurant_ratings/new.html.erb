@@ -1,6 +1,6 @@
 <h1><%= @restaurant.name %></h1>
 
-<div class="StarRating">
+<div class="StarRatingForm">
   <%= button_to "1 \u2b50", { action: 'create', rating: { rating: 1 } }, action: :post %>
   <%= button_to "2 \u2b50", { action: 'create', rating: { rating: 2 } }, action: :post %>
   <%= button_to "3 \u2b50", { action: 'create', rating: { rating: 3 } }, action: :post %>
