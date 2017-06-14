@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614163652) do
+ActiveRecord::Schema.define(version: 20170614184201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "rating", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_ratings_on_restaurant_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
 
   create_table "restaurant_tags", force: :cascade do |t|
     t.bigint "tag_id"
@@ -24,9 +34,9 @@ ActiveRecord::Schema.define(version: 20170614163652) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string "name"
-    t.integer "walking_minutes_away"
-    t.string "street_address"
+    t.string "name", null: false
+    t.integer "walking_minutes_away", null: false
+    t.string "street_address", null: false
     t.string "phone_number"
     t.string "menu_link"
     t.datetime "created_at", null: false
@@ -52,4 +62,6 @@ ActiveRecord::Schema.define(version: 20170614163652) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "ratings", "restaurants"
+  add_foreign_key "ratings", "users"
 end
