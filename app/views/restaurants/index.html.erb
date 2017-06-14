@@ -1,0 +1,41 @@
+<table>
+  <thead>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        walking distance in minutes
+      </th>
+      <th>
+        phone number
+      </th>
+      <th>
+        street address
+      </th>
+      <th>
+        menu link
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td>
+          <%= link_to restaurant.name, restaurant_path(restaurant.id) %>
+        </td>
+        <td>
+          <%= restaurant.walking_minutes_away %>
+        </td>
+        <td>
+          <%= restaurant.phone_number %>
+        </td>
+        <td>
+          <%= restaurant.street_address %>
+        </td>
+        <td>
+          <%= restaurant.menu_link %>
+        </td>
+    <% end %>
+  </tbody>
+</table>

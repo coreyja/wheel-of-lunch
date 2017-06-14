@@ -1,0 +1,20 @@
+<%= form_for @restaurant, url: {action: "create"} do |f| %>
+  <div>
+    Name: <%= f.text_field :name %>
+  </div>
+  <div>
+    Walking distance: <%= f.number_field :walking_minutes_away %>
+  </div>
+  <div>
+    Phone: <%= f.text_field :phone_number %>
+  </div>
+  <div>
+    Address: <%= f.text_field :street_address %>
+  </div>
+  <div>
+    Menu: <%= f.text_field :menu_link %>
+  </div>
+  <div>
+    <%= f.submit "Create" %>
+  </div>
+<% end %>
