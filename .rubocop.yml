@@ -4,6 +4,7 @@ inherit_from: .rubocop.thoughtbot.yml
 AllCops:
   Exclude:
     - 'vendor/**/*'
+    - 'db/schema.rb'
 
 Metrics/LineLength:
   Max: 120
