@@ -1,0 +1,10 @@
+<h1><%= @restaurant.name %></h1>
+
+<%= form_for @rating, url: { action: 'create' } do |f| %>
+    <div>
+      Rating: <%= f.number_field :rating %>
+    </div>
+    <div>
+      <%= f.submit "Create" %>
+    </div>
+<% end %>
