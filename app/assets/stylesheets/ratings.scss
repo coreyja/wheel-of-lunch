@@ -1,3 +1,7 @@
 .StarRating {
   letter-spacing: 0.5em;
+
+  .button_to, input {
+    display: inline-block;
+  }
 }
