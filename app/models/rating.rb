@@ -5,6 +5,6 @@ class Rating < ApplicationRecord
   validates :rating, presence: true, inclusion: (1..5)
 
   def stars
-    rating.times.map { "\u2b50" }.join
+    Array.new(rating, "\u2b50").join
   end
 end
