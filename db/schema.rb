@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20170614161156) do
   enable_extension "plpgsql"
 
   create_table "restaurants", force: :cascade do |t|
-    t.string "name"
-    t.integer "walking_minutes_away"
-    t.string "street_address"
+    t.string "name", null: false
+    t.integer "walking_minutes_away", null: false
+    t.string "street_address", null: false
     t.string "phone_number"
     t.string "menu_link"
     t.datetime "created_at", null: false
