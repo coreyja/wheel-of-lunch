@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20170614163652) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "walking_minutes_away", null: false
-    t.string "street_address", null: false
+    t.string "name"
+    t.integer "walking_minutes_away"
+    t.string "street_address"
     t.string "phone_number"
     t.string "menu_link"
     t.datetime "created_at", null: false
@@ -51,4 +51,5 @@ ActiveRecord::Schema.define(version: 20170614163652) do
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
+
 end
