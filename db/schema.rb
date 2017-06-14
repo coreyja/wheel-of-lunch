@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 20170614163652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "restaurant_tags", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_restaurant_tags_on_restaurant_id"
+    t.index ["tag_id", "restaurant_id"], name: "index_restaurant_tags_on_tag_id_and_restaurant_id", unique: true
+    t.index ["tag_id"], name: "index_restaurant_tags_on_tag_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
     t.integer "walking_minutes_away", null: false
@@ -24,14 +32,6 @@ ActiveRecord::Schema.define(version: 20170614163652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["walking_minutes_away"], name: "index_restaurants_on_walking_minutes_away"
-  end
-
-  create_table "restaurants_tags", id: false, force: :cascade do |t|
-    t.bigint "restaurant_id", null: false
-    t.bigint "tag_id", null: false
-    t.index ["restaurant_id"], name: "index_restaurants_tags_on_restaurant_id"
-    t.index ["tag_id", "restaurant_id"], name: "index_restaurants_tags_on_tag_id_and_restaurant_id", unique: true
-    t.index ["tag_id"], name: "index_restaurants_tags_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -51,5 +51,4 @@ ActiveRecord::Schema.define(version: 20170614163652) do
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
-
 end

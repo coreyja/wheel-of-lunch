@@ -39,6 +39,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 
   gem 'rubocop', '~> 0.49.1'
+
+  gem 'factory_girl_rails'
 end
 
 group :development do

@@ -55,6 +55,11 @@ GEM
       activemodel
     erubi (1.6.0)
     execjs (2.7.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.6.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
@@ -201,6 +206,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   clearance
+  factory_girl_rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
