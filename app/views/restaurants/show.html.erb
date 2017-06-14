@@ -1,0 +1,17 @@
+<div>
+  Name: <%= @restaurant.name %>
+</div>
+<div>
+  Walking distance: <%= @restaurant.walking_minutes_away %>
+</div>
+<div>
+  Phone: <%= @restaurant.phone_number %>
+</div>
+<div>
+  Address: <%= @restaurant.street_address %>
+</div>
+<% if @restaurant.menu_link.present? %>
+  <div>
+    Menu: <a href="<%= @restaurant.menu_link %>">Here</a>
+  </div>
+<% end %>
