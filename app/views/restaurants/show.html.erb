@@ -15,3 +15,11 @@
     Menu: <a href="<%= @restaurant.menu_link %>">Here</a>
   </div>
 <% end %>
+
+<div>
+  <%= link_to 'View Ratings', restaurant_ratings_path(@restaurant) %>
+</div>
+
+<div>
+  <%= link_to 'Rate!', new_restaurant_rating_path(@restaurant) %>
+</div>

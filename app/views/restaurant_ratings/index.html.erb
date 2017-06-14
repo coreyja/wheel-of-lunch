@@ -1,0 +1,19 @@
+<h1><%= @restaurant.name %></h1>
+
+<div>
+  <%= link_to 'Rate!', new_restaurant_rating_path(@restaurant) %>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Rated By</th>
+    <th>Rating</th>
+    <th>Rated On</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'rating', collection: @ratings %>
+  </tbody>
+</table>
