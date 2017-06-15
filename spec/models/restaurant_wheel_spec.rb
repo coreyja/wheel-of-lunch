@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RestaurantWheel, type: :model do
   let(:num_stops) { 10 }
 
-  subject(:wheel) { described_class.new num_stops }
+  subject(:wheel) { described_class.new num_stops: num_stops }
 
   describe '#wheel' do
     context 'when there are no Restaurants' do
