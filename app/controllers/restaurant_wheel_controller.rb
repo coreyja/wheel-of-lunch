@@ -1,6 +1,6 @@
 class RestaurantWheelController < AuthenticatedController
   def index
-    @restaurant_wheel = RestaurantWheel.new(wheel_params)
+    @restaurant_wheel = RestaurantWheel.new(wheel_params.to_h.symbolize_keys)
   end
 
   private

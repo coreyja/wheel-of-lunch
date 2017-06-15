@@ -3,8 +3,8 @@ class RestaurantWheel
 
   delegate :each_with_index, to: :wheel
 
-  def initialize(options = {})
-    @num_stops = (options.delete(:num_stops) || DEFAULT_NUM_STOPS).to_d
+  def initialize(num_stops: DEFAULT_NUM_STOPS)
+    @num_stops = num_stops.to_d
   end
 
   def wheel
