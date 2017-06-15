@@ -1,6 +1,10 @@
 class RestaurantWheel
-  def initialize(num_stops)
-    @num_stops = num_stops
+  DEFAULT_NUM_STOPS = 32
+
+  delegate :each_with_index, to: :wheel
+
+  def initialize(options = {})
+    @num_stops = (options.delete(:num_stops) || DEFAULT_NUM_STOPS).to_d
   end
 
   def wheel
