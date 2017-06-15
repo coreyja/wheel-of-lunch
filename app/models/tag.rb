@@ -3,5 +3,5 @@ class Tag < ApplicationRecord
   has_many :restaurants, through: :restaurant_tags
 
   scope :by_name, -> { order name: :asc }
-  scope :with_names, ->(names) { where(name: names) }
+  scope :with_names, ->(names) { where(name: names.map(&:downcase)) }
 end
