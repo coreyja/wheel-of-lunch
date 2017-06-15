@@ -6,6 +6,6 @@ class RestaurantWheelController < AuthenticatedController
   private
 
   def wheel_params
-    params.permit(:num_stops)
+    params.permit(:num_stops, :included_tags, :excluded_tags)
   end
 end

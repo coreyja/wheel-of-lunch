@@ -3,8 +3,10 @@ class RestaurantWheel
 
   delegate :each_with_index, to: :wheel
 
-  def initialize(num_stops: DEFAULT_NUM_STOPS)
+  def initialize(num_stops: DEFAULT_NUM_STOPS, included_tags: [], excluded_tags: [])
     @num_stops = num_stops.to_i
+    @included_tags = included_tags
+    @excluded_tags = excluded_tags
   end
 
   def wheel
@@ -15,10 +17,19 @@ class RestaurantWheel
 
   private
 
-  attr_reader :num_stops
+  attr_reader :num_stops, :included_tags, :excluded_tags
+
+  def filtered_restaurants
+    unless defined?(@filtered_restaurants)
+      @filtered_restaurants = Restaurant.all
+      @filtered_restaurants = @filtered_restaurants.with_tag_names(included_tags) if included_tags.present?
+      @filtered_restaurants = @filtered_restaurants.without_tag_names(excluded_tags) if excluded_tags.present?
+    end
+    @filtered_restaurants
+  end
 
   def ordered_restaurants
-    @ordered_restaurants ||= Restaurant.all.sort_by(&:average_rating).reverse
+    @ordered_restaurants ||= filtered_restaurants.sort_by(&:average_rating).reverse
   end
 
   def generate_wheel
