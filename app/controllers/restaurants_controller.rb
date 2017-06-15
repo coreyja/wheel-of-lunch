@@ -1,6 +1,6 @@
 class RestaurantsController < AuthenticatedController
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.by_name
   end
 
   def show
@@ -19,6 +19,11 @@ class RestaurantsController < AuthenticatedController
     else
       render :new
     end
+  end
+
+  def destroy
+    Restaurant.find(params[:id]).destroy!
+    redirect_to restaurants_path
   end
 
   private
