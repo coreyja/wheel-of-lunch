@@ -26,4 +26,8 @@ class Restaurant < ApplicationRecord
       restaurant_tags.build tag: Tag.find_or_create_by!(name: tag_name.downcase), restaurant: self
     end
   end
+
+  def maps_url
+    "http://maps.google.com/?q=#{street_address.gsub(' ', '+')}+New+York+NY"
+  end
 end

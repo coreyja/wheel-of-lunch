@@ -5,16 +5,10 @@
         name
       </th>
       <th>
-        walking distance in minutes
-      </th>
-      <th>
-        phone number
+        minutes walking
       </th>
       <th>
         street address
-      </th>
-      <th>
-        menu link
       </th>
       <th>
         tags
@@ -31,16 +25,12 @@
           <%= restaurant.walking_minutes_away %>
         </td>
         <td>
-          <%= restaurant.phone_number %>
+          <%= link_to restaurant.street_address, restaurant.maps_url %>
         </td>
         <td>
-          <%= restaurant.street_address %>
-        </td>
-        <td>
-          <%= restaurant.menu_link %>
-        </td>
-        <td>
-          <%= restaurant.string_tags %>
+          <% restaurant.tags.each do |tag| %>
+            <%= link_to tag.name, tag_path(tag) %>
+          <% end %>
         </td>
     <% end %>
     <tr>
