@@ -25,7 +25,7 @@ class RestaurantWheel
 
     @wheel = []
     num_stops.times do
-      @wheel << choose_single
+      @wheel << choose_single_restaurant
     end
     @wheel = @wheel.shuffle
   end
@@ -52,7 +52,7 @@ class RestaurantWheel
     end
   end
 
-  def choose_single
+  def choose_single_restaurant
     number = rand
     cummulative_weighted_restaurants.detect do |cummulative_weighting, _|
       cummulative_weighting >= number
