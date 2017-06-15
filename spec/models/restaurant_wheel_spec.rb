@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RestaurantWheel, type: :model do
   let(:num_stops) { 10 }
 
-  subject(:wheel) { described_class.new num_stops }
+  subject(:wheel) { described_class.new num_stops: num_stops }
 
   describe '#wheel' do
     context 'when there are no Restaurants' do
@@ -57,7 +57,7 @@ RSpec.describe RestaurantWheel, type: :model do
       let!(:excluded_soup_restaurant) { FactoryGirl.create :restaurant, tag_names: %i(soup other-tag) }
       let!(:excluded_sushi_restaurant) { FactoryGirl.create :restaurant, tag_names: %i(sushi japanese puppies) }
 
-      subject(:wheel) { described_class.new num_stops, excluded_tags: excluded_tag_names }
+      subject(:wheel) { described_class.new num_stops: num_stops, excluded_tags: excluded_tag_names }
 
       context 'when the excluded tags make the restaurant list empty' do
         it 'raises' do
@@ -78,7 +78,7 @@ RSpec.describe RestaurantWheel, type: :model do
       let(:included_tag_names) { %i(soup sushi) }
       let!(:excluded_restaurant) { FactoryGirl.create :restaurant, tag_names: %i(food good-food) }
 
-      subject(:wheel) { described_class.new num_stops, included_tags: included_tag_names }
+      subject(:wheel) { described_class.new num_stops: num_stops, included_tags: included_tag_names }
 
       context 'when the included tags make the restaurant list empty' do
         it 'raises' do
