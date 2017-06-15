@@ -10,4 +10,14 @@ class Restaurant < ApplicationRecord
       ratings.map(&:rating).map(&:to_d).sum / ratings.count
     end
   end
+
+  def string_tags
+    tags.map(&:name).join(' ')
+  end
+
+  def string_tags=(string_tags)
+    string_tags.split.each do |tag_name|
+      restaurant_tags.build tag: Tag.find_or_create_by!(name: tag_name), restaurant: self
+    end
+  end
 end
