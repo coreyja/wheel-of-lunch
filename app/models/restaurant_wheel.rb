@@ -16,9 +16,19 @@ class RestaurantWheel
     @wheel
   end
 
-  private
+  # private
 
   attr_reader :num_stops, :included_tags, :excluded_tags, :max_walking_time
+
+  def generate_wheel
+    raise 'Must have restuarants to create a wheel!' if filtered_restaurants.empty?
+
+    @wheel = []
+    num_stops.times do
+      @wheel << choose_single
+    end
+    @wheel = @wheel.shuffle
+  end
 
   def filtered_restaurants
     unless defined?(@filtered_restaurants)
@@ -30,17 +40,22 @@ class RestaurantWheel
     @filtered_restaurants
   end
 
-  def ordered_restaurants
-    @ordered_restaurants ||= filtered_restaurants.sort_by(&:average_rating).reverse
+  def total_average_rating
+    @total_average_rating ||= filtered_restaurants.sum(&:average_rating).to_d
   end
 
-  def generate_wheel
-    raise 'Must have restuarants to create a wheel!' if ordered_restaurants.empty?
-
-    @wheel = []
-    while @wheel.count < num_stops
-      @wheel += ordered_restaurants
+  def cummulative_weighted_restaurants
+    total = 0
+    @cummulative_weighted_restaurants ||= filtered_restaurants.map do |restaurant|
+      total += restaurant.average_rating / total_average_rating
+      [total, restaurant]
     end
-    @wheel = @wheel.first(num_stops).shuffle
+  end
+
+  def choose_single
+    number = rand
+    cummulative_weighted_restaurants.detect do |cummulative_weighting, _|
+      cummulative_weighting >= number
+    end&.last
   end
 end

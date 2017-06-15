@@ -1,4 +1,6 @@
 class Restaurant < ApplicationRecord
+  NO_RATING_DEFAULT = 2.5.to_d
+
   has_many :restaurant_tags
   has_many :tags, through: :restaurant_tags
   has_many :ratings
@@ -9,7 +11,7 @@ class Restaurant < ApplicationRecord
 
   def average_rating
     if ratings.count.zero?
-      0.to_d
+      NO_RATING_DEFAULT
     else
       ratings.map(&:rating).map(&:to_d).sum / ratings.count
     end
