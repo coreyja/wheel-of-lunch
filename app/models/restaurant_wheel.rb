@@ -3,10 +3,11 @@ class RestaurantWheel
 
   delegate :each_with_index, to: :wheel
 
-  def initialize(num_stops: DEFAULT_NUM_STOPS, included_tags: [], excluded_tags: [])
+  def initialize(num_stops: DEFAULT_NUM_STOPS, included_tags: [], excluded_tags: [], max_walking_time: nil)
     @num_stops = num_stops.to_i
     @included_tags = included_tags
     @excluded_tags = excluded_tags
+    @max_walking_time = max_walking_time&.to_i
   end
 
   def wheel
@@ -17,11 +18,12 @@ class RestaurantWheel
 
   private
 
-  attr_reader :num_stops, :included_tags, :excluded_tags
+  attr_reader :num_stops, :included_tags, :excluded_tags, :max_walking_time
 
   def filtered_restaurants
     unless defined?(@filtered_restaurants)
       @filtered_restaurants = Restaurant.all
+      @filtered_restaurants = @filtered_restaurants.within_minutes(max_walking_time) if max_walking_time.present?
       @filtered_restaurants = @filtered_restaurants.with_tag_names(included_tags) if included_tags.present?
       @filtered_restaurants = @filtered_restaurants.without_tag_names(excluded_tags) if excluded_tags.present?
     end

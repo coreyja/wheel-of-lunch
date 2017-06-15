@@ -95,5 +95,20 @@ RSpec.describe RestaurantWheel, type: :model do
         end
       end
     end
+
+    context 'when a max_walking_time is given' do
+      let(:max_walking_time) { '10' }
+
+      subject(:wheel) { described_class.new num_stops: num_stops, max_walking_time: max_walking_time }
+
+      let!(:close_restaurnat) { FactoryGirl.create :restaurant, walking_minutes_away: 1 }
+      let!(:middle_restaurnat) { FactoryGirl.create :restaurant, walking_minutes_away: 10 }
+      let!(:far_restaurnat) { FactoryGirl.create :restaurant, walking_minutes_away: 20 }
+
+      it 'only returns restaurants within the walking limit' do
+        expect(subject.wheel).to include close_restaurnat, middle_restaurnat
+        expect(subject.wheel).to_not include far_restaurnat
+      end
+    end
   end
 end
