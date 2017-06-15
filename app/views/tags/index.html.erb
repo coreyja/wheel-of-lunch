@@ -1,22 +1,28 @@
-<table>
-  <thead>
-    <tr>
-      <th>tag</th>
-      <th>restaurants</th>
-    </tr>
-  </thead>
-  <tbody>
+<div id="cloud" style="width: 550px; height: 350px;"></div>
+
+<script type="text/javascript">
+  var tags = [
     <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td>
-          <ul>
-            <% tag.restaurants.each do |restaurant| %>
-              <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
-            <% end %>
-          </ul>
-        </td>
-      </tr>
+      {text: '<%= tag.name %>', weight: <%= tag.frequency %>, link: '<%= tag_path(tag) %>'},
     <% end %>
-  </tbody>
+  ];
+
+  $(function() {
+    $('#cloud').jQCloud(tags);
+  });
+</script>
+
+<table>
+  <% @tags.each do |tag| %>
+    <tr>
+      <td><%= tag.name %></td>
+      <td>
+        <ul>
+          <% tag.restaurants.each do |restaurant| %>
+            <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
 </table>

@@ -4,4 +4,8 @@ class Tag < ApplicationRecord
 
   scope :by_name, -> { order name: :asc }
   scope :with_names, ->(names) { where(name: names.map(&:downcase)) }
+
+  def frequency
+    restaurants.count
+  end
 end

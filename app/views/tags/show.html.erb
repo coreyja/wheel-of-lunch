@@ -1,0 +1,7 @@
+<h1><%= "\##{@tag.name}" %></h1>
+
+<ul>
+  <% @tag.restaurants.each do |restaurant| %>
+    <li><%= restaurant.name %></li>
+  <% end %>
+</ul>
