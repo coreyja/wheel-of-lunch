@@ -16,7 +16,7 @@ class RestaurantWheel
     @wheel
   end
 
-  # private
+  private
 
   attr_reader :num_stops, :included_tags, :excluded_tags, :max_walking_time
 
