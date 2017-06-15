@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
 
   scope :with_tag_names, ->(tag_names) { joins(:tags).merge(Tag.with_names(tag_names)).uniq }
   scope :without_tag_names, ->(tag_names) { where.not(id: with_tag_names(tag_names)) }
+  scope :within_minutes, ->(max_walk_time) { where('walking_minutes_away <= ?', max_walk_time.to_i) }
 
   def average_rating
     if ratings.count.zero?
