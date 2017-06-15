@@ -30,3 +30,7 @@
 <div>
   <%= link_to 'Rate!', new_restaurant_rating_path(@restaurant) %>
 </div>
+
+<div>
+  <%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

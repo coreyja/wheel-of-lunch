@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'wheel', to: 'restaurant_wheel#index'
 
   resources :restaurants
+  resources :tags
 
   root 'welcome#index'
 

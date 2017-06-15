@@ -16,6 +16,9 @@
       <th>
         menu link
       </th>
+      <th>
+        tags
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +39,12 @@
         <td>
           <%= restaurant.menu_link %>
         </td>
+        <td>
+          <%= restaurant.string_tags %>
+        </td>
     <% end %>
+    <tr>
+      <td><%= link_to '+', new_restaurant_path %></td>
+    </tr>
   </tbody>
 </table>

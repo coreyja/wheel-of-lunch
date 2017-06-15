@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>tag</th>
+      <th>restaurants</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+        <td>
+          <ul>
+            <% tag.restaurants.each do |restaurant| %>
+              <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
