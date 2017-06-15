@@ -1,0 +1,23 @@
+<%= form_for @restaurant, url: {action: "update"} do |f| %>
+  <div>
+    Name: <%= f.text_field :name %>
+  </div>
+  <div>
+    Walking distance: <%= f.number_field :walking_minutes_away %>
+  </div>
+  <div>
+    Phone: <%= f.text_field :phone_number %>
+  </div>
+  <div>
+    Address: <%= f.text_field :street_address %>
+  </div>
+  <div>
+    Menu: <%= f.text_field :menu_link %>
+  </div>
+  <div>
+    Tags: <%= f.text_field :string_tags %>
+  </div>
+  <div>
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
