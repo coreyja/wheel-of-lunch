@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>
+        stop #
+      </th>
+      <th>
+        restaurant
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurant_wheel.each_with_index do |restaurant, index| %>
+      <tr>
+        <td>
+          <%= index %>
+        </td>
+        <td>
+          <%= link_to restaurant.name, restaurant_path(restaurant.id) %>
+        </td>
+    <% end %>
+  </tbody>
+</table>
