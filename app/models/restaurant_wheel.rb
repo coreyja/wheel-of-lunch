@@ -27,7 +27,7 @@ class RestaurantWheel
     num_stops.times do
       @wheel << choose_single_restaurant
     end
-    @wheel = @wheel.shuffle
+    @wheel
   end
 
   def filtered_restaurants
