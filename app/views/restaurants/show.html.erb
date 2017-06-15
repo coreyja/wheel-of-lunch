@@ -15,6 +15,9 @@
     Menu: <a href="<%= @restaurant.menu_link %>">Here</a>
   </div>
 <% end %>
+<div>
+  Tags: <%= @restaurant.string_tags %>
+</div>
 
 <div>
   <%= link_to 'View Ratings', restaurant_ratings_path(@restaurant) %>

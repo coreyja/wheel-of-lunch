@@ -24,6 +24,7 @@ class RestaurantsController < AuthenticatedController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :walking_minutes_away, :street_address, :phone_number, :menu_link)
+    params.require(:restaurant).permit(:name, :walking_minutes_away, :street_address,
+      :phone_number, :menu_link, :string_tags)
   end
 end
