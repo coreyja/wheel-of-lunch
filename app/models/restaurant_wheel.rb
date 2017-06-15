@@ -1,5 +1,5 @@
 class RestaurantWheel
-  def initialize(num_stops, included_tags: [], excluded_tags: [])
+  def initialize(num_stops:, included_tags: [], excluded_tags: [])
     @num_stops = num_stops
     @included_tags = included_tags
     @excluded_tags = excluded_tags
