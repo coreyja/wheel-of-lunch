@@ -7,6 +7,20 @@ class RestaurantsController < AuthenticatedController
     @restaurant = Restaurant.find(params[:id])
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:id])
+
+    if @restaurant.update restaurant_params
+      redirect_to restaurant_path(@restaurant.id)
+    else
+      render :edit
+    end
+  end
+
   def new
     @restaurant = Restaurant.new
   end
