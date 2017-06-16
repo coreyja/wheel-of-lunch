@@ -1,23 +1,43 @@
-<table>
-  <thead>
-    <tr>
-      <th>
-        stop #
-      </th>
-      <th>
-        restaurant
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @restaurant_wheel.each_with_index do |restaurant, index| %>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div class="wheel">
+  <div id="piechart"  class="left" style="width: 600px; height: 500px;"></div>
+
+  <table class="right">
+    <thead>
       <tr>
-        <td>
-          <%= index %>
-        </td>
-        <td>
-          <%= link_to restaurant.name, restaurant_path(restaurant.id) %>
-        </td>
-    <% end %>
-  </tbody>
-</table>
+        <th class="number">
+          stop #
+        </th>
+        <th>
+          restaurant
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @restaurant_wheel.each_with_index do |restaurant, index| %>
+        <tr>
+          <td class="number">
+            <%= index %>
+          </td>
+          <td>
+            <%= link_to restaurant.name, restaurant_path(restaurant.id) %>
+          </td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable(<%= raw @restaurant_wheel.piechart_data %>);
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data);
+  }
+</script>

@@ -1,0 +1,62 @@
+$violet: #e154cf;
+$pink: #e15493;
+$purple: #c554e1;
+
+.centered-logo {
+  width: 30rem;
+  padding: 5rem 5em 0;
+  margin: 5rem auto 0;
+  background-color: $violet;
+  text-align: center;
+
+  img {
+    width: 20rem;
+  }
+}
+
+#clearance {
+  margin: 0 auto;
+  width: 30rem;
+  padding: 5rem;
+  background-color: $violet;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 5rem;
+  }
+
+  .text-field, .password-field {
+    margin: 2rem 0;
+    label {
+      display: block;
+    }
+
+    input {
+      display: block;
+      margin: 1rem 0;
+      padding: 1rem;
+      height: 2rem;
+      width: 20rem;
+      border: none;
+    }
+  }
+
+  input[type='submit']{
+    height: 5rem;
+    border: none;
+    padding: 0 2.5rem;
+    margin: 2.5rem auto;
+    background-color: white;
+    color: $purple;
+    text-transform: uppercase;
+  }
+
+  .other-links a {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+}

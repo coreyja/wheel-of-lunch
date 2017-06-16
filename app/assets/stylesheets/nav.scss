@@ -1,0 +1,55 @@
+$violet: #e154cf;
+$pink: #e15493;
+$purple: #c554e1;
+
+.nav {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: $violet;
+  height: 5rem;
+
+  &-logo img {
+    width: 4.5rem;
+    margin-right: 1rem;
+  }
+
+  &-links {
+    display: flex;
+    flex: 1 0 auto;
+    font-size: 1.4rem;
+
+    &-item {
+      flex: 0 0 auto;
+      margin: 0 2rem 0 2rem;
+
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $violet;
+        letter-spacing: 3px;
+
+        &:hover {
+          color: $pink;
+        }
+      }
+    }
+  }
+
+  &-user-name {
+    font-size: 1.4rem;
+    margin-right: 2rem;
+  }
+
+  &-user-logout input[type='submit']{
+    height: 5rem;
+    border: none;
+    padding: 0 2.5rem;
+    background-color: $purple;
+    text-transform: uppercase;
+  }
+}
+
+.main {
+  font-size: 1.6rem;
+}

@@ -1,0 +1,18 @@
+<div class="nav">
+  <div class="nav-logo"><%= image_tag :logo %></div>
+
+  <div class="nav-links">
+    <div class="nav-links-item">
+      <%= link_to 'Spots', restaurants_path %>
+    </div>
+    <div class="nav-links-item">
+      <%= link_to 'Tags', tags_path %>
+    </div>
+    <div class="nav-links-item">
+      <%= link_to 'Wheel', wheel_path %>
+    </div>
+  </div>
+
+  <div class="nav-user-name">Hi, <%= current_user.email %></div>
+  <div class="nav-user-logout"><%= button_to 'Sign out', sign_out_path, method: :delete %></div>
+</div>

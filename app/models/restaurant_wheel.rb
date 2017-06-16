@@ -12,8 +12,12 @@ class RestaurantWheel
 
   def wheel
     generate_wheel unless defined?(@wheel)
-
     @wheel
+  end
+
+  def piechart_data
+    generate_piechart_data unless defined?(@piechart_data)
+    @piechart_data
   end
 
   private
@@ -28,6 +32,16 @@ class RestaurantWheel
       @wheel << choose_single_restaurant
     end
     @wheel
+  end
+
+  def generate_piechart_data
+    @piechart_data = [['restaurant', 'stops']]
+
+    wheel.group_by(&:id).each do |group|
+      @piechart_data << [group.second.first.name, group.second.count]
+    end
+
+    @piechart_data
   end
 
   def filtered_restaurants

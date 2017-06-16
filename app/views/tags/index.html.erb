@@ -14,16 +14,28 @@
 </script>
 
 <table>
-  <% @tags.each do |tag| %>
+  <thead>
     <tr>
-      <td><%= tag.name %></td>
-      <td>
-        <ul>
-          <% tag.restaurants.each do |restaurant| %>
-            <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
-          <% end %>
-        </ul>
-      </td>
+      <th>
+        tag name
+      </th>
+      <th>
+        tagged restaurants
+      </th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+        <td>
+          <ul>
+            <% tag.restaurants.each do |restaurant| %>
+              <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
