@@ -10,18 +10,21 @@
 
 <body>
   <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
+    <%= render 'shared/nav'%>
   <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
+    <div class="centered-logo">
+      <%= image_tag :logo %>
+    </div>
   <% end %>
+
+  <div class="main">
+    <%= yield %>
+  </div>
 
   <div id="flash">
     <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
     <% end %>
   </div>
-
-  <%= yield %>
 </body>
 </html>
