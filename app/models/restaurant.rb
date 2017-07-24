@@ -1,5 +1,5 @@
 class Restaurant < ApplicationRecord
-  NO_RATING_DEFAULT = 2.5.to_d
+  NO_RATING_DEFAULT = 3.to_d
 
   has_many :restaurant_tags
   has_many :tags, through: :restaurant_tags

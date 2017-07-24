@@ -1,5 +1,5 @@
 class RestaurantWheel
-  DEFAULT_NUM_STOPS = 32
+  DEFAULT_NUM_STOPS = 37
 
   delegate :each_with_index, to: :wheel
 
